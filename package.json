@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon api.js"
   },
   "repository": {
     "url": "git+https://github.com/ash-lowe/appdomainproject.git"
   },
   "dependencies": {
+    "body-parser": "~1.01",
+    "cors": "2.8.1",
     "express": "~4.5.0",
     "mssql": "^6.2.1"
   },
