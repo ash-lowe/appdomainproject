@@ -4,7 +4,7 @@ const conn = new sql.Connection({
     driver: 'msnodesqlv8',
     server: '14.0.1000',
     database: 'APPDOMAINPROJECT',
-    port : '3306',
+    port : 5140,
     options: {
         trustedConnection: true,
         enableArithAort: true,
@@ -12,4 +12,4 @@ const conn = new sql.Connection({
       },
 });
 
-  
+  module.exports = config;
