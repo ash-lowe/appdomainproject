@@ -1,9 +1,10 @@
-const sql = require("mysql");
+const sql = require("mssql");
 require("msnodesqlv8");
 const conn = new sql.Connection({
     driver: 'msnodesqlv8',
-    server: 'LAPTOP-OJU1IBVT\SQLEXPRESS',
+    server: '14.0.1000',
     database: 'APPDOMAINPROJECT',
+    port : '3306',
     options: {
         trustedConnection: true,
         enableArithAort: true,
