@@ -1,7 +1,7 @@
-var config = require('.dbconfig');
-const sql = require("mysql");
+var config = require('./dbconfig');
+const sql = require("mssql");
 
-function getUsers(){
+async function getUsers(){
     try{
         let pool = await sql.connect(config);
         let APPDOMAINPROJECT = await pool.request().query("SELECT * from useracount");

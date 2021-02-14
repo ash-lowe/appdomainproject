@@ -8,7 +8,7 @@ var cors = require('cors');
 var app = express();
 var router = exress.Router();
 
-app.use(bodyParser.urlencoded({extended: truth}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api',router);
