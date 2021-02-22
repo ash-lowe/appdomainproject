@@ -1,5 +1,6 @@
 var https = require('https');
 const sql = require("mssql/msnodesqlv8");
+const { getUsers } = require('./dboperations');
 const UserAccount = require('./useraccount');
 var config = {
   driver: 'msnodesqlv8',
@@ -8,11 +9,9 @@ var config = {
 sql.connect(config)
 .then(function(){
   https://github.com/ash-lowe/appdomainproject.git
-  return UserAccount
+  return getUsers
 });
-sql.catch(function(err) {
-  // ... connect error checks
-});
+
 /*const conn = new sql.Connection({
     driver: 'msnodesqlv8',
     server: 'LAPTOP-OJU1IBVT\SQLEXPRESS',
