@@ -12,8 +12,7 @@ const PORT = 5140;
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/user',usersRoutes);
-
+app.use('/user', usersRoutes);
 app.get('/', (req, res) => {
     console.log('[TEST]');
     res.send('hello from homepage.' );

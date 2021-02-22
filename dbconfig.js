@@ -1,8 +1,21 @@
-const sql = require("mssql");
-require("msnodesqlv8");
-const conn = new sql.Connection({
+var https = require('https');
+const sql = require("mssql/msnodesqlv8");
+const UserAccount = require('./useraccount');
+var config = {
+  driver: 'msnodesqlv8',
+  connectionString: 'Driver={SQL Server Native Client XX.0};Server={LAPTOP-OJU1IBVT\SQLEXPRESS};Database={APPDOMAINPROJECT};Trusted_Connection={yes};',
+};
+sql.connect(config)
+.then(function(){
+  https://github.com/ash-lowe/appdomainproject.git
+  return UserAccount
+});
+sql.catch(function(err) {
+  // ... connect error checks
+});
+/*const conn = new sql.Connection({
     driver: 'msnodesqlv8',
-    server: '14.0.1000',
+    server: 'LAPTOP-OJU1IBVT\SQLEXPRESS',
     database: 'APPDOMAINPROJECT',
     port : 5140,
     options: {
@@ -10,6 +23,11 @@ const conn = new sql.Connection({
         enableArithAort: true,
         instancename: 'SQLEXPRESS', 
       },
-});
-
+}); 
   module.exports = config;
+
+  conn.connect().then(() => {
+  https://github.com/ash-lowe/appdomainproject.git
+    
+  });
+  */
