@@ -12,11 +12,14 @@
   },
   "dependencies": {
     "body-parser": "~1.01",
+    "cmd": "^0.1.0",
     "cors": "2.8.1",
     "express": "~4.5.0",
     "https": "^1.0.0",
     "msnodesqlv8": "^0.6.12",
-    "mssql": "^6.3.1"
+    "mssql": "^6.3.1",
+    "node": "^15.8.0",
+    "ps": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "2.0.4"
