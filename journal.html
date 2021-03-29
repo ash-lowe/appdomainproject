@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABC Accounting | Dashboard</title>
+<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="css/small-styles.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/other-scr.js"></script>
+<script src="https://kit.fontawesome.com/8ad78ea5eb.js" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+$('.data-table').DataTable();
+});
+</script>
+</head>
+<body>
+<div class="wrap_page">
+  <div class="top">
+	<div class="logo-nav auto-margin">
+	  <div class="logo-cont">
+      ABC Accounting
+      </div><!--/logo-->
+	  <div class="user-info">
+	    <div class="user-thumbnail txt-right">
+		  <span class="user-name">Welcome Admin</span>
+		  <img src="images/image-ph-100.gif" class="user-img"/>
+		</div>
+      </div>
+	</div>
+  </div><!--/top-->
+  <div class="page">
+	<div class="body-content" id="admin">
+	  <div class="col-30">
+	    <div class="navigation nav-left">
+	      <ul>
+	        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+	        <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+			<li><a href="manage-users.html"><i class="fas fa-users"></i>Administrator Users</a></li>
+			<li><a href="chart-of-accounts.html"><i class="fas fa-table"></i>Charts of Accounts</a></li>
+			<li><a href="add-new-journal.html"><i class="fas fa-plus-square"></i>Add New Journal</a></li>
+			<li class="curr-a"><a href="journal.html"><i class="fas fa-edit"></i>Journal</a></li>
+			<li><a href="ledgers.html"><i class="fas fa-book"></i>Ledgers</a></li>
+			<li><a href="event-log.html"><i class="fas fa-bookmark"></i>Event Logs</a></li>
+			<li><a href="#"><i class="fas fa-file-alt"></i>Reports</a>
+			  <ul>
+			    <li><a href="report-trial-balance.html">Trial Balance</a>
+				<li><a href="report-income-statement.html">Income Statement</a>
+				<li><a href="report-statement-retained-earnings.html">Statement of Retained Earnings</a>
+				<li><a href="report-balance-sheet.html">Balance Sheet</a>
+			  </ul>
+			</li>
+          </ul>
+        </div>
+	  </div>
+	  <div class="col-70" id="dashboard">
+	    <div class="col-content">
+	      <h1 class="">Journal Entries</h1>
+		  <div class="tabs">
+		    <ul class="tabs-nav">
+			  <li class="tab-sel" data-id="tab1">Approved Entries</li>
+			  <li data-id="tab2">Pending Entries</li>
+			  <li data-id="tab3">Rejected Entries</li>
+			</ul>
+			<div class="block padd-bottom-20">
+		      <a class="button" href="add-new-journal.html">Add Journal Entry</a> 
+		    </div>
+			<div class="block tab-content" id="tab1">
+		      <table id="dataTable" class="data-table" cellpadding="0" cellspacing="0">
+			    <thead>
+                  <tr>
+                    <th>Target Date</th>
+                    <th>Accounts Involved</th>
+                    <th>Entry Reference</th>
+                    <th>Status</th>
+                    <th>Submitter</th>
+				    <th>Date Created</th>
+				    <th>Action</th>
+                  </tr>
+                </thead>
+			    <tbody>
+			      <tr>
+			        <td>12-04-2021</td>
+				    <td>
+					Cash<br>
+					Accounts Receivable<br>
+					Supplies<br>
+					Office Equipment<br>
+					Contributed Capital
+					</td>
+				    <td>VR4VNXSL6</td>
+				    <td>Approved</td>
+				    <td></td>
+					<td>12-04-2021</td>
+				    <td class="txt-center">
+				    <a class="btn-user-up button" href="journal-entry-details.html">View</a>
+				    </td>
+			      </tr>
+		        </tbody>
+			  </table>
+		    </div>
+			<div class="block tab-content" id="tab2">
+		      <table id="dataTable" class="data-table charts-table" cellpadding="0" cellspacing="0">
+			    <thead>
+                  <tr>
+                    <th>Target Date</th>
+                    <th>Accounts Involved</th>
+                    <th>Entry Reference</th>
+                    <th>Status</th>
+                    <th>Submitter</th>
+				    <th>Date Created</th>
+				    <th>Action</th>
+                  </tr>
+                </thead>
+			    <tbody>
+			      <!--<tr>
+			        <td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td class="txt-center">
+				    <a class="btn-user-up button" href="journal-entry-details.html">View</a>
+				    </td>-->
+					<p>No data available in table!</p>
+			      </tr>
+		        </tbody>
+			  </table>
+		    </div>
+			<div class="block tab-content" id="tab3">
+		      <table id="dataTable" class="data-table charts-table" cellpadding="0" cellspacing="0">
+			    <thead>
+                  <tr>
+                    <th>Target Date</th>
+                    <th>Accounts Involved</th>
+                    <th>Entry Reference</th>
+                    <th>Status</th>
+                    <th>Submitter</th>
+				    <th>Date Created</th>
+				    <th>Action</th>
+                  </tr>
+                </thead>
+			    <tbody>
+			      <!--<tr>
+			        <td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td class="txt-center">
+				    <a class="btn-user-up button" href="journal-entry-details.html">View</a>
+				    </td>-->
+					<p>No data available in table!</p>
+			      </tr>
+		        </tbody>
+			  </table>
+		    </div>
+		  </div>
+          
+		</div>
+	  </div>
+	</div>
+  </div><!-- / page-->
+  <div class="btn-top"><i class="fas fa-angle-up"></i></div>
+  <div class="footer">
+  
+  </div><!--/ footer-->
+</div>
+</body>
+</html>

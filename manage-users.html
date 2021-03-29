@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABC Accounting | Dashboard</title>
+<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="css/small-styles.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/other-scr.js"></script>
+<script src="https://kit.fontawesome.com/8ad78ea5eb.js" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+$('.data-table').DataTable();
+});
+</script>
+</head>
+<body>
+<div class="wrap_page">
+  <div class="top">
+	<div class="logo-nav auto-margin">
+	  <div class="logo-cont">
+      ABC Accounting
+      </div><!--/logo-->
+	  <div class="user-info">
+	    <div class="user-thumbnail txt-right">
+		  <span class="user-name">Welcome Admin</span>
+		  <img src="images/image-ph-100.gif" class="user-img"/>
+		</div>
+      </div>
+	</div>
+  </div><!--/top-->
+  <div class="page">
+	<div class="body-content" id="admin">
+	  <div class="col-30">
+	    <div class="navigation nav-left">
+	      <ul>
+	        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+	        <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+			<li class="curr-a"><a href="manage-users.html"><i class="fas fa-users"></i>Administrator Users</a></li>
+			<li><a href="chart-of-accounts.html"><i class="fas fa-table"></i>Charts of Accounts</a></li>
+			<li><a href="add-new-journal.html"><i class="fas fa-plus-square"></i>Add New Journal</a></li>
+			<li><a href="journal.html"><i class="fas fa-edit"></i>Journal</a></li>
+			<li><a href="ledgers.html"><i class="fas fa-book"></i>Ledgers</a></li>
+			<li><a href="event-log.html"><i class="fas fa-bookmark"></i>Event Logs</a></li>
+			<li><a href="#"><i class="fas fa-file-alt"></i>Reports</a>
+			  <ul>
+			    <li><a href="report-trial-balance.html">Trial Balance</a>
+				<li><a href="report-income-statement.html">Income Statement</a>
+				<li><a href="report-statement-retained-earnings.html">Statement of Retained Earnings</a>
+				<li><a href="report-balance-sheet.html">Balance Sheet</a>
+			  </ul>
+			</li>
+          </ul>
+        </div>
+	  </div>
+	  <div class="col-70" id="dashboard">
+	    <div class="col-content">
+	      <h1 class="">Manage Users</h1>
+		  <div class="block padd-bottom-20">
+		    <input type="button" value="Add Account" class="button add-user"/>
+			<div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="addUserForm" name="add-user-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add User Account</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Email</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="email" id="email" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>First Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="first-name" id="first-name" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Last Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="last-name" id="last-name" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Occupation</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Admin" selected="selected">Admin</option>
+								  <option value="Manager">Manager</option>
+								  <option value="Accountant">Accountant</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Add User" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+		  </div>
+          <div class="block">
+		    <table id="dataTable" class="data-table charts-table" cellpadding="0" cellspacing="0">
+			  <thead>
+                <tr>
+                  <th>EmployeID</th>
+                  <th>Email</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Occupation</th>
+				  <th>Status</th>
+				  <th>Action</th>
+                </tr>
+              </thead>
+			  <tbody>
+			    <tr>
+			      <td>1</td>
+				  <td>admin@email.com</td>
+				  <td>Tom</td>
+				  <td>Philip</td>
+				  <td>Admin</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-user-up button" href="#">Edit</a>
+				    <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="addUserForm" name="add-user-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add User Account</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Email</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="email" id="email" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>First Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="first-name" id="first-name" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Last Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="last-name" id="last-name" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Occupation</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Admin" selected="selected">Admin</option>
+								  <option value="Manager">Manager</option>
+								  <option value="Accountant">Accountant</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Option 2">Option 2</option>
+								  <option value="Option 3">Option 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Update User" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+                <tr>
+			      <td>2</td>
+				  <td>user2@email.com</td>
+				  <td>User</td>
+				  <td>Two</td>
+				  <td>Manager</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-user-up button" href="#">Edit</a>
+				    <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="addUserForm" name="add-user-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add User Account</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Email</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="email" id="email" value="user2@email.com" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>User</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="first-name" id="first-name" value="User" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Two</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="last-name" id="last-name" value="Two" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Occupation</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld">
+                                  <option value="Accountant" selected="selected">Accountant</option>
+								  <option value="Admin">Admin</option>
+								  <option value="Manager">Manager</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Option 2">Option 2</option>
+								  <option value="Option 3">Option 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Update User" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+                <tr>
+			      <td>3</td>
+				  <td>user3@email.com</td>
+				  <td>User</td>
+				  <td>Three</td>
+				  <td>Manager</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-user-up button" href="#">Edit</a>
+				    <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="addUserForm" name="add-user-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add User Account</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Email</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="email" id="email" value="user3@email.com" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>User</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="first-name" id="first-name" value="User" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Three</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="last-name" id="last-name" value="Three" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Occupation</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Manager" selected="selected">Manager</option>
+								  <option value="Admin">Admin</option>
+								  <option value="Accountant">Accountant</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Option 2">Option 2</option>
+								  <option value="Option 3">Option 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Update User" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+                <tr>
+			      <td>4</td>
+				  <td>user4@email.com</td>
+				  <td>User</td>
+				  <td>Four</td>
+				  <td>Accountant</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-user-up button" href="#">Edit</a>
+				    <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="addUserForm" name="add-user-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add User Account</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Email</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="email" id="email" value="user4@email.com" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>User</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="first-name" id="first-name" value="User" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Four</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="last-name" id="last-name" value="Four" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Occupation</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld">
+                                  <option value="Accountant" selected="selected">Accountant</option>
+								  <option value="Admin">Admin</option>
+								  <option value="Manager">Manager</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="occup" id="occup" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Option 2">Option 2</option>
+								  <option value="Option 3">Option 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-user-up" id="btnFrmUserUp" value="Update User" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>				
+		      </tbody>
+			</table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div><!-- / page-->
+  <div class="btn-top"><i class="fas fa-angle-up"></i></div>
+  <div class="footer">
+  
+  </div><!--/ footer-->
+</div>
+</body>
+</html>

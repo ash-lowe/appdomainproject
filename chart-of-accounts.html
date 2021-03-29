@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABC Accounting | Dashboard</title>
+<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="css/small-styles.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/other-scr.js"></script>
+<script src="https://kit.fontawesome.com/8ad78ea5eb.js" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+$('.data-table').DataTable();
+});
+</script>
+</head>
+<body>
+<div class="wrap_page">
+  <div class="top">
+	<div class="logo-nav auto-margin">
+	  <div class="logo-cont">
+      ABC Accounting
+      </div><!--/logo-->
+	  <div class="user-info">
+	    <div class="user-thumbnail txt-right">
+		  <span class="user-name">Welcome Admin</span>
+		  <img src="images/image-ph-100.gif" class="user-img"/>
+		</div>
+      </div>
+	</div>
+  </div><!--/top-->
+  <div class="page">
+	<div class="body-content" id="admin">
+	  <div class="col-30">
+	    <div class="navigation nav-left">
+	      <ul>
+	        <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+	        <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+			<li><a href="manage-users.html"><i class="fas fa-users"></i>Administrator Users</a></li>
+			<li class="curr-a"><a href="chart-of-accounts.html"><i class="fas fa-table"></i>Charts of Accounts</a></li>
+			<li><a href="add-new-journal.html"><i class="fas fa-plus-square"></i>Add New Journal</a></li>
+			<li><a href="journal.html"><i class="fas fa-edit"></i>Journal</a></li>
+			<li><a href="ledgers.html"><i class="fas fa-book"></i>Ledgers</a></li>
+			<li><a href="event-log.html"><i class="fas fa-bookmark"></i>Event Logs</a></li>
+			<li><a href="#"><i class="fas fa-file-alt"></i>Reports</a>
+			  <ul>
+			    <li><a href="report-trial-balance.html">Trial Balance</a>
+				<li><a href="report-income-statement.html">Income Statement</a>
+				<li><a href="report-statement-retained-earnings.html">Statement of Retained Earnings</a>
+				<li><a href="report-balance-sheet.html">Balance Sheet</a>
+			  </ul>
+			</li>
+          </ul>
+        </div>
+	  </div>
+	  <div class="col-70" id="dashboard">
+	    <div class="col-content">
+	      <h1 class="">Chart of Accounts</h1>
+		  <div class="block padd-bottom-20">
+		    <a class="button add-account">Add Account</a>
+			<div class="wrap-popup add-acc-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="editForm" name="edit-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add an Account to your Chart of Accounts</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Account Code</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-code" id="acc-code" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-name" id="acc-name" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Category</label>
+							  </div>
+							  <div class="col-70">
+							    <select name="acc-cat" id="acc-cat" class="txt-field req-fld"> 
+							      <option value="Asset" selected="selected">Asset</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Term</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-term" id="acc-term" class="txt-field req-fld"> 
+							      <option value="Current" selected="selected">Current</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Normal Side</label>
+							  </div>
+							  <div class="col-70">
+								<select name="normal-side" id="normal-side" class="txt-field req-fld"> 
+							      <option value="Debit" selected="selected">Debit</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Initial Balance</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="ini-balance" id="ini-balance" value="" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-status" id="acc-status" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Add Account" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+		  </div>
+          <div class="block">
+		    <table id="dataTable" class="data-table charts-table" cellpadding="0" cellspacing="0">
+			  <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Term</th>
+                  <th>Normal Side</th>
+                  <th>Balance</th>
+				  <th>Status</th>
+				  <th>Action</th>
+                </tr>
+              </thead>
+			  <tbody>
+			    <tr>
+			      <td>101</td>
+				  <td>Cash</td>
+				  <td>Asset</td>
+				  <td>Current</td>
+				  <td>Debit</td>
+				  <td>$8.875.00</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-edit button" href="#">Edit</a>
+				    <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="editForm" name="edit-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add an Account to your Chart of Accounts</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Account Code</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-code" id="acc-code" value="101" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-name" id="acc-name" value="Cash" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Category</label>
+							  </div>
+							  <div class="col-70">
+							    <select name="acc-cat" id="acc-cat" class="txt-field req-fld"> 
+							      <option value="Asset" selected="selected">Asset</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Term</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-term" id="acc-term" class="txt-field req-fld"> 
+							      <option value="Current" selected="selected">Current</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Normal Side</label>
+							  </div>
+							  <div class="col-70">
+								<select name="normal-side" id="normal-side" class="txt-field req-fld"> 
+							      <option value="Debit" selected="selected">Debit</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Initial Balance</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="ini-balance" id="ini-balance" value="$8.875.00" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-status" id="acc-status" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Add Account" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+			    <tr>
+			      <td>102</td>
+				  <td>Cash</td>
+				  <td>Asset</td>
+				  <td>Current</td>
+				  <td>Debit</td>
+				  <td>$8.875.00</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-edit button" href="#">Edit</a>
+				  <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="editForm" name="edit-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add an Account to your Chart of Accounts</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Account Code</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-code" id="acc-code" value="102" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-name" id="acc-name" value="Cash" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Category</label>
+							  </div>
+							  <div class="col-70">
+							    <select name="acc-cat" id="acc-cat" class="txt-field req-fld"> 
+							      <option value="Asset" selected="selected">Asset</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Term</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-term" id="acc-term" class="txt-field req-fld"> 
+							      <option value="Current" selected="selected">Current</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Normal Side</label>
+							  </div>
+							  <div class="col-70">
+								<select name="normal-side" id="normal-side" class="txt-field req-fld"> 
+							      <option value="Debit" selected="selected">Debit</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Initial Balance</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="ini-balance" id="ini-balance" value="$8.875.00" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-status" id="acc-status" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Add Account" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+				<tr>
+			      <td>103</td>
+				  <td>Cash</td>
+				  <td>Asset</td>
+				  <td>Current</td>
+				  <td>Debit</td>
+				  <td>$8.875.00</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-edit button" href="#">Edit</a>
+				  <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="editForm" name="edit-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add an Account to your Chart of Accounts</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Account Code</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-code" id="acc-code" value="103" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-name" id="acc-name" value="Cash" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Category</label>
+							  </div>
+							  <div class="col-70">
+							    <select name="acc-cat" id="acc-cat" class="txt-field req-fld"> 
+							      <option value="Asset" selected="selected">Asset</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Term</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-term" id="acc-term" class="txt-field req-fld"> 
+							      <option value="Current" selected="selected">Current</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Normal Side</label>
+							  </div>
+							  <div class="col-70">
+								<select name="normal-side" id="normal-side" class="txt-field req-fld"> 
+							      <option value="Debit" selected="selected">Debit</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Initial Balance</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="ini-balance" id="ini-balance" value="$8.875.00" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-status" id="acc-status" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Add Account" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+				<tr>
+			      <td>104</td>
+				  <td>Cash</td>
+				  <td>Asset</td>
+				  <td>Current</td>
+				  <td>Debit</td>
+				  <td>$8.875.00</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-edit button" href="#">Edit</a>
+				  <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="editForm" name="edit-form" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add an Account to your Chart of Accounts</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Account Code</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-code" id="acc-code" value="104" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-name" id="acc-name" value="Cash" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Category</label>
+							  </div>
+							  <div class="col-70">
+							    <select name="acc-cat" id="acc-cat" class="txt-field req-fld"> 
+							      <option value="Asset" selected="selected">Asset</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Term</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-term" id="acc-term" class="txt-field req-fld"> 
+							      <option value="Current" selected="selected">Current</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Normal Side</label>
+							  </div>
+							  <div class="col-70">
+								<select name="normal-side" id="normal-side" class="txt-field req-fld"> 
+							      <option value="Debit" selected="selected">Debit</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Initial Balance</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="ini-balance" id="ini-balance" value="$8.875.00" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-status" id="acc-status" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-login" id="btnFrmLogin" value="Add Account" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>
+				<tr>
+			      <td>105</td>
+				  <td>Cash</td>
+				  <td>Asset</td>
+				  <td>Current</td>
+				  <td>Debit</td>
+				  <td>$8.875.00</td>
+				  <td>Active</td>
+				  <td class="txt-center">
+				  <a class="btn-edit button" href="#">Edit</a>
+				  <div class="wrap-popup">
+					  <div class="more-popup">
+					    <div class="block">
+						  <form id="editFrmCharts" name="edit-frm-charts" class="formSection" action="" method="post">
+						    <div class="block">  
+							  <h4 class="txt-left">Add an Account to your Chart of Accounts</h4>
+							</div>
+						    <div class="block">
+							  <div class="col-30">
+							    <label>Account Code</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-code" id="acc-code" value="105" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Name</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="acc-name" id="acc-name" value="Cash" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Category</label>
+							  </div>
+							  <div class="col-70">
+							    <select name="acc-cat" id="acc-cat" class="txt-field req-fld"> 
+							      <option value="Asset" selected="selected">Asset</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Term</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-term" id="acc-term" class="txt-field req-fld"> 
+							      <option value="Current" selected="selected">Current</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Normal Side</label>
+							  </div>
+							  <div class="col-70">
+								<select name="normal-side" id="normal-side" class="txt-field req-fld"> 
+							      <option value="Debit" selected="selected">Debit</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Initial Balance</label>
+							  </div>
+							  <div class="col-70">
+							    <input type="text" name="ini-balance" id="ini-balance" value="$8.875.00" class="txt-field req-fld" />
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="col-30">
+							    <label>Account Status</label>
+							  </div>
+							  <div class="col-70">
+								<select name="acc-status" id="acc-status" class="txt-field req-fld"> 
+							      <option value="Active" selected="selected">Active</option>
+								  <option value="Cat 2">Cat 2</option>
+								  <option value="Cat 3">Cat 3</option>
+								</select>
+							  </div>
+							</div>
+							<div class="block">
+							  <input type="button" name="btn-charts" id="btnFrmCharts" value="Cancel" class="btn-submit btn-cancel" />
+							  <input type="button" name="btn-charts" id="btnFrmCharts" value="Add Account" class="button" />
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </td>
+			    </tr>				
+		      </tbody>
+			</table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div><!-- / page-->
+  <div class="btn-top"><i class="fas fa-angle-up"></i></div>
+  <div class="footer">
+  
+  </div><!--/ footer-->
+</div>
+</body>
+</html>
