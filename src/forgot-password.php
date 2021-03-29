@@ -2,17 +2,17 @@
 
 include 'scripts/user-defaults.php';
 
-$DATABASE_HOST = '127.0.0.1';
+$DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
-$DATABASE_NAME = 'appdomain';
+$DATABASE_NAME = 'applicationdomain';
 $link = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 $email = $_POST['email'];
 
-$sql = "SELECT SecurityQ1, SecurityQ2, SecurityA1, SecurityA2, id  FROM accounts WHERE Email='$email'";
+$sql = "SELECT QUESTION1, QUESTION2, QUESTION3 ANSWER1, ANSWER2, ANSWER3 id  FROM useraccount WHERE Email='$email'";
 //Gets current user data
 $qry = mysqli_query($link, $sql);
 $data = mysqli_fetch_array($qry);
@@ -21,11 +21,13 @@ if(isset($_POST['Change'])) {
 	$newpass = $_POST['newPass'];
 	passwordRequirements($newpass);
 	$hashed = password_hash($_POST['newPass'], PASSWORD_DEFAULT);
-	$a1 = $_POST['answer1'];
-	$a2 = $_POST['answer2'];
+	$a1 = $_POST['ANSWER1'];
+	$a2 = $_POST['ANSWER2'];
+	$a3 = $_POST['ANSWER3'];
+
 
 	//Checks to see if questions match answers
-	if($data['SecurityA1'] != $a1 || $data['SecurityA2'] != $a2) {
+	if($data['ANSWER1'] != $a1 || $data['ANSWER2'] != $a2 || $data['ANSWER3'] != $a3) {
 		echo 'incorrect answers for security questions.';
 		exit;
     }
@@ -41,7 +43,7 @@ if(isset($_POST['Change'])) {
 					}}
 				mysqli_free_result($result);
 	}}
-	$sqlupd = "UPDATE accounts SET password = '$hashed' WHERE Email='$email'";
+	$sqlupd = "UPDATE useraccount SET password = '$hashed' WHERE Email='$email'";
 	$edit = mysqli_query($link, $sqlupd);
 	if($edit) {
 		setPasswordExpire($data['id']);
@@ -54,4 +56,3 @@ if(isset($_POST['Change'])) {
         echo mysqli_error();
 	} 
 } 
-

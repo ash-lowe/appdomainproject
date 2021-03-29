@@ -2,10 +2,10 @@
 
 function connectDB()
 {
-    $DATABASE_HOST = '127.0.0.1';
+    $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'root';
     $DATABASE_PASS = '';
-    $DATABASE_NAME = 'appdomain';
+    $DATABASE_NAME = 'applicationdomain';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 
     return $con;
@@ -16,12 +16,12 @@ function connectDB()
 function setPasswordExpire($id)
 {
     $con = connectDB();
-    if ($stmt = $con->prepare('SELECT * FROM accounts WHERE ID = ?')) {
+    if ($stmt = $con->prepare('SELECT * FROM USERACCOUNT WHERE ID = ?')) {
     	$stmt->bind_param('i', $id);
 	    $stmt->execute();
 	    $stmt->store_result();
     	if ($stmt->num_rows > 0) {
-            if ($stmt = $con->prepare('UPDATE accounts SET PasswordExpire = DATE_ADD(NOW(), INTERVAL 6 MONTH) WHERE ID = ?')) {
+            if ($stmt = $con->prepare('UPDATE USERACCOUNT SET PasswordExpire = DATE_ADD(NOW(), INTERVAL 6 MONTH) WHERE ID = ?')) {
                 $stmt->bind_param('i', $id);
                 $stmt->execute();
 
@@ -42,23 +42,23 @@ function setPasswordExpire($id)
 function generateUsernameByID($id)
 {
     $con = connectDB();
-    if ($stmt = $con->prepare('SELECT Fname, Lname, dateCreated FROM accounts WHERE ID = ?')) {
+    if ($stmt = $con->prepare('SELECT Fname, Lname, SIGNUPTIME FROM USERACCOUNT WHERE ID = ?')) {
     	$stmt->bind_param('i', $id);
 	    $stmt->execute();
         $stmt->store_result();
     	if ($stmt->num_rows > 0) {
-            if ($stmt = $con->prepare('SELECT Fname, Lname, dateCreated FROM accounts WHERE ID = ?')) {
+            if ($stmt = $con->prepare('SELECT Fname, Lname, SIGNUPTIME FROM USERACCOUNT WHERE ID = ?')) {
                 $stmt->bind_param('i', $id);
                 $stmt->execute();
-                $stmt->bind_result($Fname, $Lname, $dateCreated);
+                $stmt->bind_result($Fname, $Lname, $SIGNUPTIME);
                 $stmt->fetch();
                 $stmt->close();
                 $username = substr($Fname, 0, 1);
                 $username .= $Lname;
-                $username .= substr($dateCreated, 5, 2);
-                $username .= substr($dateCreated, 2, 2);
+                $username .= substr($SIGNUPTIME, 5, 2);
+                $username .= substr($SIGNUPTIME, 2, 2);
 
-                if($stmt = $con->prepare('UPDATE accounts SET username = ? WHERE ID = ?')) {
+                if($stmt = $con->prepare('UPDATE USERACCOUNT SET username = ? WHERE ID = ?')) {
                     $stmt->bind_param("si", $username, $id);
                     $stmt->execute();
 
@@ -88,7 +88,7 @@ function generateUsernameByName($fName, $lName)
     $username .= substr($currentDate, 2, 2);      
     $username .= '%';    
     $con = connectDB();
-    if ($stmt = $con->prepare('SELECT * FROM accounts WHERE username LIKE ?')) {
+    if ($stmt = $con->prepare('SELECT * FROM USERACCOUNT WHERE username LIKE ?')) {
         $stmt->bind_param('s', $username);
 	    $stmt->execute();
         $stmt->store_result();
@@ -111,12 +111,12 @@ function storePassword($id)
 {
     $con = connectDB();
     // Check if the account with that username exists.
-    if ($stmt = $con->prepare('SELECT * FROM accounts WHERE ID = ?')) {
+    if ($stmt = $con->prepare('SELECT * FROM USERACCOUNT WHERE ID = ?')) {
     	$stmt->bind_param('i', $id);
 	    $stmt->execute();
         $stmt->store_result();
     	if ($stmt->num_rows > 0) {
-            if ($stmt = $con->prepare('SELECT password FROM accounts WHERE ID = ?')) {
+            if ($stmt = $con->prepare('SELECT password FROM USERACCOUNT WHERE ID = ?')) {
                 $stmt->bind_param('i', $id);
                 $stmt->execute();
                 $stmt->bind_result($password);
@@ -147,12 +147,12 @@ function setSuspensionDates($id, $startDate, $endDate)
 {
     $con = connectDB();
     // Check if the account with that username exists.
-    if ($stmt = $con->prepare('SELECT * FROM accounts WHERE ID = ?')) {
+    if ($stmt = $con->prepare('SELECT * FROM USERACCOUNT WHERE ID = ?')) {
     	$stmt->bind_param('i', $id);
 	    $stmt->execute();
 	    $stmt->store_result();
     	if ($stmt->num_rows > 0) {
-            if ($stmt = $con->prepare('UPDATE accounts SET SuspendStart = ?, SuspendEnd = ? WHERE ID = ?')) {
+            if ($stmt = $con->prepare('UPDATE USERACCOUNT SET STARTSUSPEND = ?, ENDSUSPEND = ? WHERE ID = ?')) {
                 $stmt->bind_param('ssi', $startDate, $endDate, $id);
                 $stmt->execute();
 
