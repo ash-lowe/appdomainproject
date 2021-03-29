@@ -10,14 +10,9 @@ $dbname="applicationdomain";
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
 	or die ('Could not connect to the database server' . mysqli_connect_error());
 
-//$con->close();
 
 if ( mysqli_connect_errno() ) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
-
-if ( !isset($_POST['username'], $_POST['password']) ) {
-	exit('Please fill both the username and password fields!');
 }
 
 if ($stmt = $con->prepare('SELECT id, password, USERPOSITION, ACCOUNTACTIVE, STARTSUSPEND, ENDSUSPEND FROM useraccount WHERE username = ?')) {

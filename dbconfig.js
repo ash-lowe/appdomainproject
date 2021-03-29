@@ -1,13 +1,21 @@
 var https = require('https');
-const sql = require("mssql/msnodesqlv8");
+const mysql = require("mysql");
 const { getUsers } = require('./dboperations');
 const UserAccount = require('./useraccount');
-var config = {
-  driver: 'msnodesqlv8',
-  connectionString: 'Driver={SQL Server Native Client 11.0};Server={LAPTOP-OJU1IBVT\SQLEXPRESS};Database={APPDOMAINPROJECT};Trusted_Connection={yes};',
-};
-sql.connect(config)
-.then(function(){
-  "https://github.com/ash-lowe/appdomainproject.git"
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'n7:G@ceK{JU^D/{',
+  database: 'applicationdomain'
 });
-module.exports = config;
+connection.connect((err) => {
+  if(err){
+    console.log('Error connecting to Db');
+    return;
+  }
+  console.log('Connection established');
+});
+
+connection.end((err) => {
+});
+module.exports = connection;
