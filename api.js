@@ -11,14 +11,14 @@ var router = express.Router();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/api',router);
+app.use('./api',router);
 
 router.use((request,response,next)=>{
     console.log('middleware');
     next();
 })
 
-router.route('/useraccount').get((request,response)=>{
+router.route('./useraccount').get((request,response)=>{
     dboperations.getUsers().then(result =>{
         response.json(result[0])
     })
@@ -26,7 +26,7 @@ router.route('/useraccount').get((request,response)=>{
 
 var port = process.env.PORT || 5140;
 app.listen(port);
-console.log('Order API is running at' + port);
+console.log('Order API is running at  ' + port);
 
 dboperations.getUsers().then(result =>{
     console.log(result);
