@@ -1,5 +1,5 @@
 var config = require('./dbconfig');
-const sql = require("mysql"); 
+var sql = require("mysql"); 
 async function getUsers(){
     try{
         let pool = await sql.connect(config);

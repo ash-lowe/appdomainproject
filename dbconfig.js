@@ -1,6 +1,5 @@
 var https = require('https');
 const mysql = require("mysql");
-const { getUsers } = require('./dboperations');
 const UserAccount = require('./useraccount');
 const connection = mysql.createConnection({
   host: 'localhost',
